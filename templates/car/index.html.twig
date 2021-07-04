@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voici nos différents véhicules{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="my-5">Voici la liste de nos véhicules à louer !</h1>
+    <section class="row" id="cars"  >
+        <div class="col-md-3 " >
+            {% include 'partials/_filterCar.html.twig' with {'form' : form, 'min' : min, 'max' : max} %}     
+        </div>
+        <div class="col-md-9">
+            {% for car in cars %}
+                {% include "partials/_product.html.twig" %}
+            {% endfor %}
+        </div>
+    </section>
+    <div>
+        {{ knp_pagination_render(cars) }}
+    </div>
+</div>    
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('js/app') }}
+{% endblock %}
+

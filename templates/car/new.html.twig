@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Création d'une annonce{% endblock %}
+
+{% block body %}
+<div class="container">
+    {{ form_start(form, {'attr' : {class :'form_add', id : "register"}}) }}
+    <h1>Ajouter un véhicule</h1>
+    <table>
+        <tr>
+            <span id='erreur_addcars'></span>
+            <td class="title">
+                {{ form_widget(form.title) }}
+            </td>
+        </tr>
+        <tr>
+            <td class="price">
+                {{ form_widget(form.price) }}
+            </td>
+        </tr>
+        <tr>
+            <td class="content">
+                {{ form_widget(form.content) }}
+            </td>
+        </tr>
+        <tr>
+            <td class="cover_image">
+                {{ form_widget(form.image) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ form_widget(form.category) }}            
+            </td>
+        </tr>
+        <tr>
+            <td class="submit">
+                <button type="submit" name="submit_product">Ajouter mon véhicule</button>
+            </td>
+        </tr>
+    </table>
+</div>
+{{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,206 @@
+@charset "UTF-8";
+@import url("./bootstrap.min.css");
+/****** Variables ******/
+/******** Mixins ********/
+/******** blocks ********/
+.header_visiteur {
+  background-color: black;
+  background-size: cover;
+  padding: 5rem;
+  max-width: 100%;
+  color: white;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  height: 20rem;
+}
+
+.header_visiteur .nav {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  width: 50%;
+}
+
+.header_visiteur .nav nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: "row";
+          flex-direction: "row";
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: -73px;
+  padding: 2.5rem 0;
+  margin: 10px;
+  text-align: center;
+  width: 50%;
+}
+
+.header_visiteur .nav nav a {
+  text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  font-family: "Amaranth";
+  color: white;
+  padding: 1rem 1.5rem;
+  size: 2rem;
+  margin-right: 4rem;
+}
+
+.header_visiteur .nav nav a:hover {
+  background-color: red;
+  color: white;
+}
+
+.header_visiteur .member {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2.5rem;
+  width: 50%;
+}
+
+.header_visiteur .member img {
+  margin-left: 4rem;
+  width: 9rem;
+}
+
+.header_visiteur .nav .member h2:hover {
+  color: red;
+}
+
+#cars #product .btn:hover, footer h2:hover {
+  color: red;
+}
+
+#cars {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 2rem auto;
+}
+
+#cars #product .btn {
+  background-color: black;
+  text-transform: uppercase;
+  display: inline-block;
+  color: white;
+  letter-spacing: 0.2rem;
+  padding: 1.5rem 2rem;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+#cars .img {
+  -webkit-transition: .3s ease-in-out;
+  -webkit-transform: scale(1);
+  transition: .3s ease-in-out;
+  transform: scale(1);
+  margin: 0 10px;
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+
+/*************************************************/
+/********************* GLOBAL ********************/
+/*************************************************/
+* {
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: all .1s ease 0s;
+  transition: all .1s ease 0s;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html body {
+  background-repeat: no-repeat;
+  background-color: #1C1F23;
+  background-size: cover;
+  margin: auto;
+  padding: 0;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+html body .container {
+  text-align: center;
+  width: 80%;
+  margin: auto;
+}
+
+html body a, html body p, html body span, html body h1, html body h2 {
+  color: white;
+}
+
+html body img {
+  max-width: 100%;
+}
+
+/***************************************************/
+/*********************** MAIN **********************/
+/***************************************************/
+/***** HEADER VISITEUR *****/
+.header_visiteur .a {
+  margin-right: 2rem;
+}
+
+/***** Véhicule index / Véhicule catégory *****/
+#cars #product {
+  margin-bottom: 2rem;
+  text-align: center;
+  border: 10px solid black;
+  display: block;
+  width: 30%;
+}
+
+#cars #product .description {
+  text-align: center;
+  margin: auto;
+  width: 100%;
+}
+
+/*************************************************/
+/********************* FOOTER ********************/
+/*************************************************/
+footer {
+  background-position: top;
+  background-repeat: no-repeat;
+  background-color: black;
+  background-size: cover;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  color: white;
+  padding: 2rem;
+}
+/*# sourceMappingURL=app.css.map */

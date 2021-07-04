@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Reservation n°{{booking.id}}{% endblock %}
+
+{% block body %}
+{% set user = booking.car.user %}
+{% set car = booking.car %}
+<div class="container">
+    <h1 class="my-5">Votre reservation (n°{{booking.id}})</h1>
+    
+    {% if app.request.query.get('withAlert') %}
+        <div class="alert alert-success">
+            <h4 class="alert-heading">Bravo !</h4>
+            <p>
+                Votre réservation auprès de 
+                <strong>
+                    <a href="{{ path('user_show', {slug: user.slug})}}">{{user.fullname}}</a>
+                </strong>
+                pour le véhicule
+                <strong>
+                    <a href="{{ path('car_show', {slug:car.slug})}}">{{car.title}}</a>
+                </strong>
+                a bien été prise en compte !
+            </p>
+        </div>
+    {% endif %}
+
+
+    <div class="row my-4">
+        <div class="col">
+            <div class="alert alert-light">
+                <h2>Détails</h2>
+                <dl class="row">
+                    <dt class="col-md-4">Numéro</dt>
+                    <dd class="col-md-8">{{booking.id}}</dd>
+                    <dt class="col-md-4">Date de retrait</dt>
+                    <dd class="col-md-8">{{booking.startDate | date('d-m-y')}}</dd>
+                    <dt class="col-md-4">Date de réstitution</dt>
+                    <dd class="col-md-8">{{booking.endDate | date('d-m-y')}}</dd>
+                    <dt class="col-md-4">Nombre de jours</dt>
+                    <dd class="col-md-8">{{booking.days}}</dd>
+                    <dt class="col-md-4">Montant total</dt>
+                    <dd class="col-md-8">{{booking.amount}}&euro;</dd>
+                </dl>
+
+                <hr>
+
+                <h2 class="alert-heading my-4">Le propriétaire</h2>
+                <div class="row">
+                    <div class="col-3">
+                        <img src="{{user.avatar}}" alt="avatar de {{user.fullname}}" class="avatar avatar-medium">
+                    </div>
+                    <div class="col-9">
+                        <h4>
+                            <a href="{{path('user_show', {slug : user.slug})}}">{{user.fullname}}</a>
+                        </h4>
+                        <span class="badge badge-primary">{{user.cars | length}} véhicules</span>                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="alert alert-light">
+                <h2 class="alert-heading">Le véhicule loué</h2>
+
+                <img src="{{car.coverImage}}" alt="{{car.title}}" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

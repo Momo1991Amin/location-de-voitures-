@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Réservation de {{ app.user.fullname }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="my-5">Reservations</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>N° de réservation</th>
+                    <th>Véhicule</th>
+                    <th>Image</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for booking in app.user.bookings %}
+            {% set car = booking.car %}
+                <tr>
+                    <td>{{ booking.id }}</td>
+                    <td>{{ car.title }}</td>
+                    <td><img src="{{ car.coverImage}}" alt="{{car.title}}" class="img-table"></td>
+                    <td>{{ booking.startdate | date('d-m-y') }}</td>
+                    <td>{{ booking.enddate | date('d-m-y') }}</td>
+                    <td>{{ booking.amount }} &euro;</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<form action="{{ path('account_login')}}" method="post" id="login" class="form_login">
+    {% for label,messages in app.flashes %}
+        <div class="container">
+            <div class="alert alert-{{label}} my-4">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    <h1>Déjà membre</h1>
+    <table>
+        <tr>
+            <span id='erreur_login'></span>
+            <td class="email">
+                <i class="fa fa-user"></i>
+                <input type="email" name="_username" id="mail_login" placeholder=" Adresse e-mail" value="">
+            </td>
+        </tr>
+        <tr>
+            <td class="password">
+                <i class="fa fa-lock"></i>
+                <input type="password" name="_password" id="password_login" placeholder=" Mot de passe"><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" name="submit_login">Me connecter</button>
+            </td>
+        </tr>
+    </table>
+    <p><a href="#">Mot de passe oublié ?</a></p>
+    <p>vous n'êtes pas encore membre ?</br><a href="{{ path('account_register')}}">Rejoignez-nous maintenant.</a></p>
+    {% if error %}
+        <div class="alert alert-danger">
+            <p>Votre adresse mail ou votre mot de passe est incorrect</p>
+        </div>
+    {% endif %}
+</form>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('js/login') }}
+{% endblock %}

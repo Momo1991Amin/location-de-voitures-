@@ -1,0 +1,19 @@
+<article id="product">
+    <section class="img">
+        <a href="{{ path('car_show', {'slug' : car.slug}) }}">
+        <img src="{{car.coverImage}}" alt="image de {{ car.title }}" />
+        </a>
+    </section>
+    <section class="description">
+        <h2 class ="card-title my-4">{{car.title}}</h2>
+        <p>{{car.price}} &euro; / jour</p>   
+    </section>
+    <div>
+        <bold class="text-muted text-primary text-italic">#{{ car.category.name }}</bold>
+    </div>
+    {% if app.user %}  
+        <a class="btn" href="{{ path('booking_car', { slug : car.slug}) }}">Réserver ce véhicule</a>
+    {% else %}
+        <a class="btn" href="{{ path('car_show', { slug  : car.slug}) }}">Voir le véhicule</a>
+    {% endif %}
+</article>

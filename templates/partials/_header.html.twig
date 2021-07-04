@@ -1,0 +1,27 @@
+<header class="header_visiteur">
+    <section class="member">
+        {% if app.user %}
+            <a href="{{ path('account_logout')}}">
+                <h2>Déconnexion </h2>
+            </a>	
+        {% else %}
+            <a href="{{ path('account_login') }}">
+                <h2>Espace membre</h2>
+            </a>      
+        {% endif %}
+            <a href="{{ path('cars_home') }}">
+                <img src="{{asset('build/images/logo.jpg')}}" alt="logo">
+            </a>
+    </section>	
+    <section class="nav">
+        <nav> 
+            {% for category in categories.findAll %}
+                <a href="{{ path('cars_category', {'id': category.id}) }}">{{category.name}}</a>
+            {% endfor %}                
+            
+            {% if app.user %}
+                <a href="{{ path('account_user')}}">Mon Espace</a>
+            {% endif %}            
+        </nav>	
+    </section>
+</header>

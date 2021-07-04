@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{{ car.title }}{% endblock %}
+
+{% block body %}
+{% set user = car.user %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col-4">
+            <div class="card align-items-center">
+                <h1 class="title">Propriétaire</h1>
+                <a href="{{ path('user_show', {'slug' : user.slug})}}">
+                    <img src="{{ user.avatar }}" alt="avatar de {{ user.fullname }}" class="avatar">
+                </a>
+                <h3 class="my-3">{{ user.fullname }}</h3>
+                <span class="badge badge-primary mb-3 p-2">{{user.cars | length}} véhicule(s)</span>
+            </div>
+        </div>
+        <div class="col-8">
+            {% include "partials/_product.html.twig" %}
+        </div>
+    </div>
+</div>
+{% endblock %}

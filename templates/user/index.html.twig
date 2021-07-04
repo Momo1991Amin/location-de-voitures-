@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Compte de {{user.fullname}}{% endblock %}
+
+{% block body %}
+    {% for label,messages in app.flashes %}
+        <div class="container my-4">
+            <div class="alert alert-{{label}}">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+<div class="container">
+    <section class="row align-items-center" >
+        <div class="col-3 text-center my-4">
+        {% if user is same as(app.user) %}
+            <h2 class="mb-5">{{ user.fullname }}</h2>
+        {% endif %}
+            <img src="{{user.avatar}}" class="avatar avatar-medium mb-3" alt="photo de {{user.fullname}}"><br>
+            <span class="badge badge-primary mb-3">{{user.cars | length}} annonces</span>
+        </div>
+        <div  class="col-9">      
+            {% if user is same as(app.user) %}
+                <div class="my-3">
+                    <a href="{{ path('account_update', {id:app.user.id}) }}" class="btn mr-2">Modifier mes informations</a>
+                    <a href="{{ path('password_update')}}" class="btn mr-2">Modifier mon mot de passe</a>
+                    <a href="{{ path('account_user_bookings') }}" class="btn mr-2">Mes reservations</a>
+                    <a href="{{ path('car_create') }}" class="btn mr-2">Ajouter un véhicule</a>
+                </div>
+            {% else %}
+                <h1 class="mb-5">{{ user.fullname }}</h1>
+            {% endif %}
+        </div>
+        {% if user.cars|length > 0 %}
+            <div id="cars" class="row mb-4 mt-3">
+                {% if app.user %}
+                <h2 class="my-3">Mes véhicules</h2>
+                {% else %}
+                <h2 class="my-3">Ces véhicules</h2>
+                {% endif %}
+                <table class="table table-hover mb-5">
+                    <thead>
+                        <tr>
+                            <th>Nom du véhicule</th>
+                            <th>prix</th>
+                            <th>catégorie</th>
+                            <th>image</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for car in user.cars %}
+                        <tr>
+                            <td>{{car.title}}</td>
+                            <td>{{car.price}}&euro;/jour</td>
+                            <td>{{car.category}}</td>
+                            <td>
+                                <a href="{{path('car_show', {slug : car.slug})}}"><img src="{{car.coverImage}}" alt="{{car.title}}" class="img-table"></a>
+                                {# {{ asset('uploads/' ~ car.coverImage) }} #}
+                            </td>
+                            {% if user is same as(app.user)  %}
+                            <td>
+                                <a href="{{ path('car_delete', {slug:car.slug})}}" class="alert alert-danger"><i class="fi-xnsuxl-trash-bin"></i></a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> 
+            </div>         
+        {% else %}
+            <div class="alert alert-warning my-3">
+                <p><strong>{{user.fullname}}</strong> n'a pas encore d'annonces sur le site !</p>
+            </div>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script defer src="https://friconix.com/cdn/friconix.js"> </script>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="container">
+         {{ form_start(form, {'attr' : {class :'form_register', id : "register"}}) }}
+        <h1>Inscrivez vous afin de profiter de notre réseaux</h1>
+        <table>
+                <span id='erreur_register'></span>
+            <tr>
+                <td class="firstname">
+                    {{ form_row(form.firstName)}}
+                </td>
+            </tr>
+            <tr>
+                <td class="lastname">
+                    {{ form_row(form.lastName)}}
+                </td>
+            </tr>
+            <tr>
+                <td class="email">
+                    {{ form_row(form.email)}}
+                </td>
+            </tr>
+            <tr>
+                <td class="avatar">
+                    {{ form_row(form.avatar)}}
+                </td>
+            </tr>
+            <tr>
+                <td class="mdp">
+                    {{ form_row(form.hash)}}
+                </td>
+            </tr>
+            <tr>
+                <td class="mdp">
+                    {{ form_row(form.passwordConfirm)}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><small>En créant un compte, vous acceptez de vous conformer à la Politique de confidentialité</small></p> 
+                    <p>et aux <a href="">Conditions générales de vente</a></small></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="submit">
+                    <button type="submit" class="btn" name="submit_login">Confirmez l'inscription</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Déja membre ? <a href="{{ path('account_login')}}">Se connecter</a></p>
+                </td>
+            </tr>
+        </table>        
+        {{ form_end(form) }}        
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('js/register') }}
+{% endblock %}

@@ -1,0 +1,446 @@
+@import url('./bootstrap.min.css');
+@import url('./nouislider.css');
+
+/****** Variables ******/
+$primary: darken(#428bca, 20%);
+$background-form : rgba(255, 255, 255, 0.404);
+
+/******** Mixins ********/
+@mixin nav($direction) {
+    display        : flex;
+    flex-direction : $direction;
+    text-transform : uppercase;
+    letter-spacing : 1px;
+    margin-bottom  : -73px;
+    padding        : 2.5rem 0;
+    margin         : 10px;
+    text-align     : center;
+    width          : 50%;
+}
+
+@mixin div-products($width) {
+	margin-bottom : 2rem;
+	text-align    : center;
+    border        : 10px solid black;
+	display       : block;
+	width         :$width;
+}
+
+@mixin form($color,$width,$margin) {
+    background-color : $color;
+	border-radius    : 10px ;
+    margin           : $margin auto;
+	width            : $width;
+	padding          : 30px 30px;
+    text-align       : center;
+    table {
+        margin: auto;
+    }
+    input {
+        @extend %form-input;
+    }
+}
+
+@mixin form-label($margin-y,$margin-x) {
+    border-bottom : 1px solid red; 
+	overflow : hidden;
+	font-size: 2rem;
+    width    : 100%;
+    color    :white;
+    display  :flex;
+	padding  : 8px 0;
+	margin   : 4rem 3rem;
+}
+
+
+
+/******** blocks ********/
+%header-style {
+    background-image    : url('../img/header.jpg');
+    background-size     : cover;
+    background-position : 45% 28%;
+    padding             : 5rem;
+    max-width           : 100%;
+	color               : white;
+    margin              : auto;
+    display             : flex;
+    align-items         : baseline;
+    height              : 20rem;
+}
+
+%header {
+	@extend %header-style;
+
+    .nav {
+        display         : flex;
+        justify-content : center;
+        align-items     : baseline;
+        width           : 50%;
+
+        nav {
+            @include nav("row");
+    
+            a {
+                text-shadow : 0 0 0.5rem rgba(0, 0, 0, 0.1);
+                font-family : "Amaranth";
+                color       : white;
+                padding     : 1rem 1.5rem;
+                size        : 2rem;
+    
+                &:hover {
+                    color : red;
+                }
+            }
+        }
+    }
+
+    .member {
+        display           : flex;
+        justify-content   : center;
+        text-align        : center;
+        align-items       : center;
+        margin-top        : 2.5rem;
+        width             : 50%;
+
+        img {
+            margin-left : 4rem;
+            width       : 9rem;
+            
+            &:hover {
+                @extend %hover-img-up; 
+            }
+        } 
+
+        h2:hover {
+            color :red;
+        } 
+    }   
+}
+
+%hover-h2 {
+	color : red;
+}
+
+%div-cars {
+	justify-content : space-around; 
+    display         : flex;
+    flex-wrap       : wrap;
+    margin          : 2rem auto ;
+}
+
+%button-style {
+    background-color : black;
+	text-transform   : uppercase;
+	display          : inline-block;
+	color            : white;
+	letter-spacing   : 0.2rem;
+	padding          : 1.5rem 2rem;
+	margin           : 1rem 0;
+    text-align       : center;
+    &:hover {
+        @extend %hover-h2;
+    }
+}
+
+%style-img {
+	-webkit-transition : .3s ease-in-out;
+	-webkit-transform  : scale(1);
+	transition : .3s ease-in-out;
+	transform  : scale(1);
+    margin     : 0 10px;
+	width      :100%;
+	text-align :center;
+    display    : block;
+    margin:auto;
+}
+
+%hover-img-down {
+    -webkit-transform : scale(0.9);
+	transform         : scale(0.9);
+}
+
+%hover-img-up {
+    -webkit-transform : scale(1.0);
+	transform         : scale(1.1);
+}
+
+%form-input {
+	background : none;
+    border     : none;
+	outline    : none;
+	font-size  : 2rem;
+	color      :white;
+	width      : 100%;
+}
+
+%form-style-td {
+	border-bottom : 1px solid red;
+    width         : 100%;
+	color         : white;
+	display       : flex;
+	overflow      : hidden;
+	font-size     : 2rem;
+	padding       : 8px 0;
+	margin        : 8px 0;
+}
+
+%form-button {
+	background : none;
+    width      : 100%;
+	border     : 2px solid red;
+	color      : white;
+	padding    : 1rem;
+	margin     : 1rem auto;
+    cursor     : pointer;
+    &:hover {
+        background-color: black;
+    }
+}
+
+
+
+/*************************************************/
+/********************* GLOBAL ********************/
+/*************************************************/
+* {
+	text-decoration : none;
+	box-sizing      : border-box;
+	transition      : all .1s ease 0s;
+	margin          : 0px;
+	padding         : 0px;
+	outline         : none;
+} 
+
+html {
+    font-size: 62.5%;
+
+    body {
+        background-repeat : no-repeat;
+        background-color  : #1C1F23;
+        background-size   : cover;
+        margin            : auto;
+        padding           : 0;
+        font-size         : 1.6rem;
+        line-height       : 1.6;
+        font-size         : 1.6rem;
+        color             : rgba(0,0,0,0.5);	
+        font-family       : "Open Sans", Arial, sans-serif;
+
+        .container {
+            text-align : center;
+            width      : 80%;
+            margin     : auto;
+        }
+
+        a,p,span,h1,h2 {
+            color : white;
+        }
+    
+        img {
+            max-width : 100%;
+        }
+    }
+}
+
+*:hover {
+	transition : all .3s ease 0s;
+}
+
+a, a:hover, a:visited, a:active {
+	text-decoration : none;
+}
+
+.btn {
+    @extend %button-style;
+}
+
+img {
+    @extend %style-img;
+}
+
+.avatar {
+    border-radius : 50%;
+    width         : 20rem;
+
+    &.avatar-micro {
+        max-width : 2rem;
+    }
+
+    &.avatar-mini {
+        max-width : 5rem;
+    }
+
+    &.avatar-medium  {
+        max-width : 10rem;
+    }
+}
+
+.img-table {
+    width : 5rem;
+}
+
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+    color : firebrick !important;
+}
+
+/***************************************************/
+/*********************** MAIN **********************/
+/***************************************************/
+
+/***** HEADER VISITEUR *****/
+.header_visiteur {
+    @extend %header;
+
+    .a {
+        margin-right: 2rem;
+    }
+ }
+
+ /***** Véhicule index / Véhicule catégory *****/
+#cars.row  {
+    @extend %div-cars;
+    .col-md-9 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+    }
+    #product {
+        @include div-products(30%);
+
+        .description {
+            text-align : center;
+            margin     : auto;
+            width      :100%;
+        }
+    }
+
+    img:hover {
+        @extend %hover-img-down;
+    }  
+
+
+    form {
+        background-color : black;
+        text-align       : left;
+        padding          : 3rem;
+        display          :block;
+        position         :sticky;
+        top              :20rem;
+
+        label.form-check-label {
+            margin-left : 2rem;
+            color       : white;
+        }  
+
+        .noUi-connect {
+            background : blue;
+        }
+
+        #car {
+            font-size : 1.5rem;
+        }
+        #min {
+            font-size : 1.5rem;
+        }
+        #max {
+            font-size : 1.5rem;
+        }
+    }
+}
+
+/**************************************************/
+/******************** FORM_BOOK *******************/
+/**************************************************/
+.form_book {
+    @include form(rgba(255, 255, 255, 0.3),60%,5rem);
+
+    span {
+        color : white;
+    }
+}
+/**************************************************/
+/************* FORM_REGISTER/ FORM_ADD ************/
+/**************************************************/
+.form_register, .form_add {
+    @include form($background-form,50%,5rem);
+
+    .firstname,.lastname,.email,.avatar,.mdp {
+        @extend %form-style-td;
+        margin-bottom : 2rem;
+    }
+
+    textarea{
+        background : none;
+        border     : none;
+        outline    : none;
+        font-size  : 2rem;
+        color      : white;
+        width      : 100%;
+        margin-bottom: 2rem;
+    } 
+
+    #car_title, #car_price, #car_content, #car_image {
+        margin-bottom: 2rem;
+    }
+
+    #car_category {
+        margin-top: 2rem;
+    }
+
+    table {
+        margin: auto;
+    }
+    &::placeholder{
+        color : red;
+    } 
+
+    button {
+        @extend %form-button;
+    }
+}
+
+/**************************************************/
+/******************* FORM_LOGIN *******************/
+/*************************************************/
+.form_login {
+    @include form(rgba(0, 0, 0, 0.404),30%,7rem);
+    h1 {
+        color:white;
+    } 
+
+    .email,.password {
+        @extend %form-style-td;
+    } 
+
+    button {
+        @extend %form-button;
+    }
+}
+
+  
+/*************************************************/
+/********************* FOOTER ********************/
+/*************************************************/
+footer {
+	background-position : top;
+	background-repeat   : no-repeat;
+	background-color    : black;
+	background-size     : cover;
+    margin              : auto;
+    text-align: center;
+	width               : 100%;
+	color               : white;
+    padding             : 2rem;
+
+    h2:hover {
+        @extend %hover-h2;
+    }
+
+    img {
+        width: 20rem;
+        &:hover {
+            @extend %hover-img-up;
+        } 
+    }
+
+}
